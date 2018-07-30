@@ -17,7 +17,6 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @user.id
       redirect_to '/account'
     else
-      halt 302
       redirect_to '/account'
     end
   end
