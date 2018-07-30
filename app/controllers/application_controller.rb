@@ -15,7 +15,6 @@ class ApplicationController < Sinatra::Base
 
     if @user
       session[:user_id] = @user.id
-      binding.pry
       redirect_to '/account'
     else
       halt 302
@@ -28,7 +27,7 @@ class ApplicationController < Sinatra::Base
     if @user
       erb :account
     else
-      erb :error
+      halt 302, erb(:error)
     end
   end
 
