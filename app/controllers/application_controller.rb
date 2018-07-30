@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @user.id
       redirect_to '/account'
     else
-      redirect_to '/account'
+      halt 302, erb(:error)
     end
   end
 
@@ -25,8 +25,7 @@ class ApplicationController < Sinatra::Base
     @user = User.find_by(session[:user_id])
     if @user
       erb :account
-    else
-      halt 302, erb(:error)
+      
     end
   end
 
